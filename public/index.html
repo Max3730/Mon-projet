@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔍 Recherche de Profils LinkedIn & Facebook</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- En-tête -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-search"></i> Recherche de Profils</h1>
+                <p>Trouvez automatiquement des profils LinkedIn et Facebook selon vos critères</p>
+            </div>
+        </header>
+
+        <!-- Formulaire de recherche -->
+        <section class="search-section">
+            <div class="form-container">
+                <h2><i class="fas fa-filter"></i> Critères de recherche</h2>
+                <form id="searchForm" class="search-form">
+                    <div class="form-group">
+                        <label for="pays">
+                            <i class="fas fa-globe"></i> Pays
+                        </label>
+                        <input 
+                            type="text" 
+                            id="pays" 
+                            name="pays" 
+                            placeholder="Ex: Bénin, France, Canada..."
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="domaine">
+                            <i class="fas fa-industry"></i> Domaine d'activité
+                        </label>
+                        <input 
+                            type="text" 
+                            id="domaine" 
+                            name="domaine" 
+                            placeholder="Ex: Informatique, Marketing, Finance..."
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="poste">
+                            <i class="fas fa-briefcase"></i> Poste recherché
+                        </label>
+                        <input 
+                            type="text" 
+                            id="poste" 
+                            name="poste" 
+                            placeholder="Ex: Développeur Web, Chef de projet..."
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" class="search-btn" id="searchBtn">
+                        <i class="fas fa-search"></i>
+                        <span>Rechercher</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Zone de chargement -->
+        <div id="loadingSection" class="loading-section hidden">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                <h3>Recherche en cours...</h3>
+                <p>Extraction des profils LinkedIn et Facebook</p>
+            </div>
+        </div>
+
+        <!-- Section des résultats -->
+        <section id="resultsSection" class="results-section hidden">
+            <div class="results-header">
+                <h2><i class="fas fa-list"></i> Résultats de la recherche</h2>
+                <div class="results-actions">
+                    <span id="resultsCount" class="results-count"></span>
+                    <button id="exportBtn" class="export-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        Exporter en PDF
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table id="resultsTable" class="results-table">
+                    <thead>
+                        <tr>
+                            <th><i class="fas fa-user"></i> Nom / Titre</th>
+                            <th><i class="fas fa-info-circle"></i> Description</th>
+                            <th><i class="fas fa-share-alt"></i> Plateforme</th>
+                            <th><i class="fas fa-external-link-alt"></i> Lien</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsBody">
+                        <!-- Les résultats seront insérés ici -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Section d'erreur -->
+        <div id="errorSection" class="error-section hidden">
+            <div class="error-content">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Erreur lors de la recherche</h3>
+                <p id="errorMessage">Une erreur s'est produite. Veuillez réessayer.</p>
+                <button onclick="hideError()" class="retry-btn">
+                    <i class="fas fa-redo"></i>
+                    Réessayer
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 - Outil de recherche automatique de profils</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
